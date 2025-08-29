@@ -1,5 +1,7 @@
 import { useState } from "react";
 import assets from "../assets/assets";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginPage() {
   const [currstate, setCurrstate] = useState("Sign Up");
@@ -9,12 +11,21 @@ export default function LoginPage() {
   const [bio, setBio] = useState("");
   const [isDataSubmitted, setIsDataSubmitted] = useState(false);
 
+  const { login } = useContext(AuthContext);
+
   function onSubmitHandler(e) {
     e.preventDefault();
     if (currstate === "Sign Up" && !isDataSubmitted) {
       setIsDataSubmitted(true);
       return;
     }
+
+    login(currstate === "Sign Up" ? "signup" : "login", {
+      fullName,
+      email,
+      password,
+      bio,
+    });
   }
   return (
     <div className="min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl">
