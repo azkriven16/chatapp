@@ -32,7 +32,7 @@ export const Sidebar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Bird className="w-8 h-8 text-black" />
-            <span className="text-xl font-semibold text-black">App</span>
+            <span className="text-xl font-semibold text-black">Birdie</span>
           </div>
 
           <div className="relative p-2 group">
