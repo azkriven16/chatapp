@@ -1,7 +1,7 @@
 import cloudinary from "../lib/cloudinary.js";
 import { Message } from "../models/Message.js";
 import { User } from "../models/User.js";
-import { userSocketMap } from "../server.js";
+import { io, userSocketMap } from "../server.js";
 
 // get all users
 export const getUserFromSidebar = async (req, res) => {
@@ -87,7 +87,7 @@ export const sendMessage = async (req, res) => {
       imgUrl = uploadResponse.secure_url;
     }
 
-    const newMessage = Message.create({
+    const newMessage = await Message.create({
       senderId,
       receiverId,
       text,
