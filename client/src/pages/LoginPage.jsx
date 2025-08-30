@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import assets from "../assets/assets";
-import { useContext } from "react";
+import { Bird } from "lucide-react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginPage() {
@@ -29,17 +27,17 @@ export default function LoginPage() {
     });
   }
   return (
-    <div className="min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col">
       {/* left */}
-      <img src={assets.logo_big} className="w-[min(30vw,250px)]" alt="" />
+      <Bird className="w-[min(30vw,250px)] h-[min(30vw,250px)] text-black" />
 
       {/* right */}
 
       <form
         onSubmit={onSubmitHandler}
-        className="border-2 bg-white/8 text-white border-gray-500 p-6 flex flex-col gap-6 rounded-lg shadow-lg"
+        className="border-2 bg-white/95 text-gray-800 border-gray-200 p-6 flex flex-col gap-6 rounded-lg shadow-xl backdrop-blur-sm"
       >
-        <h2 className="font-medium text-2xl flex justify-between items-center">
+        <h2 className="font-medium text-2xl flex justify-between items-center text-gray-800">
           {currstate}
           {isDataSubmitted && (
             <img
@@ -56,7 +54,7 @@ export default function LoginPage() {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             type="text"
-            className="p-2 border border-gray-500 rounded-md focus:outline-none"
+            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black bg-white text-gray-800"
             placeholder="Full Name"
             required
           />
@@ -68,7 +66,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black bg-white text-gray-800"
               placeholder="Email Address"
               required
             />
@@ -77,7 +75,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black bg-white text-gray-800"
               placeholder="Password"
               required
             />
@@ -89,20 +87,20 @@ export default function LoginPage() {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             rows={4}
-            className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-gray-800"
             placeholder="provide a short bio"
             required
           ></textarea>
         )}
 
         <button
-          className="py-3 bg-gradient-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer"
+          className="py-3 bg-black text-white rounded-md cursor-pointer hover:bg-gray-800 transition-all duration-200"
           type="submit"
         >
           {currstate === "Sign Up" ? "Create Account" : "Login Now"}
         </button>
 
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-gray-600">
           <input type="checkbox" />
           <p>Agree to the terms of use & privacy policy</p>
         </div>
@@ -113,7 +111,7 @@ export default function LoginPage() {
               Already have an account?{" "}
               <span
                 onClick={() => setCurrstate("Login")}
-                className="font-medium text-violet-500 cursor-pointer"
+                className="font-medium text-black cursor-pointer hover:text-gray-700"
               >
                 Login here
               </span>
@@ -123,7 +121,7 @@ export default function LoginPage() {
               Create an account{" "}
               <span
                 onClick={() => setCurrstate("Sign Up")}
-                className="font-medium text-violet-500 cursor-pointer"
+                className="font-medium text-black cursor-pointer hover:text-gray-700"
               >
                 Click here
               </span>

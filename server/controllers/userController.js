@@ -62,7 +62,7 @@ export const login = async (req, res) => {
       success: true,
       user: userData,
       token,
-      message: "account created",
+      message: "login success",
     });
   } catch (error) {
     console.log(error.message);
